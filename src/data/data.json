@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "thoigian": "2024-01-30",
+    "truc_CH_BTL": "Lãnh đạo",
+    "truc_CH_TT": "Quân sự",
+    "trucban_tacchien": "Tập trận quân sự",
+    "trucban_noivu": "Khu vực biên giới",
+    "noidung_quanso": "Triển khai 1000 binh sĩ và 50 xe tăng",
+    "noidung_vukhi": "Sử dụng vũ khí trang bị hiện đại",
+    "noidung_ketqua": "Hoàn thành mục tiêu tập trận",
+    "noidung_dukien": "Phân loại và cải tiến chiến thuật",
+    "noidung_ykien": "Đánh giá hiệu suất của binh sĩ và vũ khí",
+    "noidung_ketluan": "Nâng cao khả năng chiến đấu và quản lý tập trận",
+    "noidung_KH_BTL": "Phát triển sức mạnh quân sự",
+    "noidung_chidao_BTL": "Tuân thủ quy định và chiến lược quốc phòng"
+  },
+  {
+    "id": 2,
+    "thoigian": "2024-01-30",
+    "truc_CH_BTL": "Lãnh đạo",
+    "truc_CH_TT": "Quân sự",
+    "trucban_tacchien": "Chiến lược phòng thủ",
+    "trucban_noivu": "Khu vực chiến lược",
+    "noidung_quanso": "Triển khai hệ thống phòng thủ tuyến tính",
+    "noidung_vukhi": "Hệ thống tên lửa phòng không",
+    "noidung_ketqua": "Ngăn chặn tấn công giả mạo",
+    "noidung_dukien": "Xây dựng và nâng cấp hệ thống phòng thủ",
+    "noidung_ykien": "Đánh giá hiệu suất của hệ thống",
+    "noidung_ketluan": "Tăng cường khả năng phòng thủ trước mối đe dọa",
+    "noidung_KH_BTL": "Bảo vệ chiến lược quốc gia",
+    "noidung_chidao_BTL": "Duy trì sẵn sàng và tính linh hoạt trong chiến lược phòng thủ"
+  },
+  {
+    "id": 3,
+    "thoigian": "2024-01-30",
+    "truc_CH_BTL": "Lãnh đạo",
+    "truc_CH_TT": "Quân sự",
+    "trucban_tacchien": "Hỗ trợ nhân đạo",
+    "trucban_noivu": "Vùng bị ảnh hưởng chiến tranh",
+    "noidung_quanso": "Triển khai đội quân hỗ trợ nhân đạo",
+    "noidung_vukhi": "Thực hiện các hoạt động cứu hộ",
+    "noidung_ketqua": "Giúp đỡ và bảo vệ dân cư địa phương",
+    "noidung_dukien": "Xây dựng hệ thống cứu thương và y tế",
+    "noidung_ykien": "Đánh giá độ hiệu quả của các hoạt động nhân đạo",
+    "noidung_ketluan": "Tạo ảnh hưởng tích cực trong cộng đồng quốc tế",
+    "noidung_KH_BTL": "Thực hiện nhiệm vụ hỗ trợ nhân đạo",
+    "noidung_chidao_BTL": "Tuân thủ nguyên tắc nhân đạo và tôn trọng chủ quyền quốc gia"
+  }
+]
