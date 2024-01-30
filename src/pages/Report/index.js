@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import { Button, Modal, Form, Input, DatePicker, Table, Select } from 'antd';
-import { EditOutlined, DeleteOutlined, EyeOutlined, FileTextOutlined } from '@ant-design/icons';
-import data from "../../data/data.json"
-import './style.scss'
+import { EditOutlined, DeleteOutlined, EyeOutlined, FileTextOutlined, FileAddOutlined} from '@ant-design/icons';
+import data from "../../data/data.json";
+import './style.scss';
+import renderDoc from "./Export/renderDoc";
+import { saveAs } from "file-saver";
+import { Packer } from "docx";
 
 const Report = () => {
   const [isModalCreateVisible, setIsModalCreateVisible] = useState(false);
@@ -18,6 +21,16 @@ const Report = () => {
   const handleDetail = (record) => {
     setSelectedRow(record);
     setIsModalDetailVisible(true);
+  };
+
+
+  const handleExport = (record) => {
+    const doc = renderDoc(record);
+    Packer.toBlob(doc).then(blob => {
+      saveAs(blob, `Giao ban ngày ${record.thoigian}.docx`);
+    });
+
+
   };
 
   const handleOk = () => {
@@ -68,12 +81,12 @@ const Report = () => {
       key: 'action',
       render: (text, record) => (
         <span>
-          <Button type="link" onClick={() => handleDetail(record)}>
+          <Button type="link" onClick={() => handleDetail(record)} className="icon-items">
             <EyeOutlined />
           </Button>
-          <Button icon={<EditOutlined />} />
-          <Button icon={<DeleteOutlined />} />
-          <Button icon={<FileTextOutlined />} />
+          <Button icon={<EditOutlined />}  className="icon-items"/>
+          <Button icon={<DeleteOutlined />}  className="icon-items"/>
+          <Button icon={<FileTextOutlined />} type="link" onClick={() => handleExport(record)} className="icon-items" />
 
         </span>
       ),
@@ -82,7 +95,7 @@ const Report = () => {
 
   return (
     <div style={{ margin: '16px' }}>
-      <Button type="primary" onClick={showCreateModal}>
+      <Button type="primary" onClick={showCreateModal} class="test" icon={<FileAddOutlined />}>
         Lập báo cáo
       </Button>
       <Modal title="Báo cáo mới" visible={isModalCreateVisible} onCancel={handleCancel} footer={null}>
