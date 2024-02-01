@@ -7,3 +7,17 @@
 .icon-items{
   margin: 0 1px;
 }
+
+.ant-modal-content{
+  .ant-modal-body{
+    .ant-row{
+      display: block;
+      .ant-form-item-label{
+        text-align: start;
+      }
+    }
+    .ant-form-item{
+      margin-bottom: 18px;
+    }
+  }
+}

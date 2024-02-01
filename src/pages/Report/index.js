@@ -96,9 +96,9 @@ const Report = () => {
   return (
     <div style={{ margin: '16px' }}>
       <Button type="primary" onClick={showCreateModal} class="test" icon={<FileAddOutlined />}>
-        Lập báo cáo
+        Thêm báo cáo
       </Button>
-      <Modal title="Báo cáo mới" visible={isModalCreateVisible} onCancel={handleCancel} footer={null}>
+      <Modal title="Báo cáo mới" visible={isModalCreateVisible} onCancel={handleCancel} footer={null} className="modal-add">
         <Form form={form} onFinish={handleOk}>
           <Form.Item name="thoigian" label="Thời gian báo cáo" rules={[{ required: true }]}>
             <DatePicker showTime />
