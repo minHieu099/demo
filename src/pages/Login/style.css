@@ -1,0 +1,35 @@
+body {
+    background: linear-gradient(to bottom, #ff7e5f, #feb47b);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  
+  .login-form-container {
+    background: white;
+    width: 300px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+  }
+  
+  .login-form .ant-form-item {
+    margin-bottom: 15px;
+  }
+  
+  .login-form .ant-form-item input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  .login-form .ant-form-item .ant-btn-primary {
+    background-color: #ff7e5f;
+    border-color: #ff7e5f;
+    width: 100%;
+    font-weight: bold;
+  }
+  
