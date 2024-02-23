@@ -2,28 +2,34 @@ import React from 'react';
 import { Button, Table } from 'antd';
 import { EditOutlined, DeleteOutlined, EyeOutlined, FileTextOutlined } from '@ant-design/icons';
 
-const HandOverReportTable = ({ reportInfo, handleDetail, handleExport,handleEdit }) => {
-  const columns = [
+const ShiftHandOverReportTable = ({ reportInfo, handleDetail, handleExport }) => {
+    console.log(reportInfo)
+    const columns = [
     {
-      title: 'Thời gian',
-      dataIndex: 'thoigian',
-      key: 'thoigian',
-    },
-    {
-      title: 'Trực chỉ huy BTL',
-      dataIndex: 'truc_CH_BTL',
-      key: 'trucCH',
-    },
-    {
-      title: 'Trực chỉ huy Trung tâm',
-      dataIndex: 'truc_CH_TT',
-      key: 'trucTT',
-    },
-    {
-      title: 'Trực ban tác chiến',
-      dataIndex: 'trucban_tacchien',
-      key: 'trucBanTC',
-    },
+        title: 'ID',
+        dataIndex: 'id',
+        key: 'id',
+      },
+      {
+        title: 'Thời Gian',
+        dataIndex: 'thoi_gian',
+        key: 'thoi_gian',
+      },
+      {
+        title: 'Trực Chỉ Huy',
+        dataIndex: 'truc_chi_huy',
+        key: 'truc_chi_huy',
+      },
+      {
+        title: 'Trực Ban Cũ',
+        dataIndex: 'truc_ban_cu',
+        key: 'truc_ban_cu',
+      },
+      {
+        title: 'Trực Ban Mới',
+        dataIndex: 'truc_ban_moi',
+        key: 'truc_ban_moi',
+      },
     {
       title: 'Action',
       key: 'action',
@@ -43,4 +49,4 @@ const HandOverReportTable = ({ reportInfo, handleDetail, handleExport,handleEdit
   return <Table dataSource={reportInfo} columns={columns} />;
 };
 
-export default HandOverReportTable;
+export default ShiftHandOverReportTable;

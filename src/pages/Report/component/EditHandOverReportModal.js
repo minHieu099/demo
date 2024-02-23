@@ -2,19 +2,20 @@ import React, { useEffect, useState } from "react";
 import { Select, Spin, Alert } from "antd";
 import axios from "axios";
 import { Modal, Form, DatePicker, Input, Button } from "antd";
+import "../../../utils/index";
+import { convertToB } from "../../../utils/index";
 const { Option } = Select;
 
-const NewHandOverReportModal = ({
-  isVisible,
-  handleOk,
-  handleCancel,
-  form,
-}) => {
+const EditHandOverReportModal = ({ isVisibleEditForm, selectedRow }) => {
+  const [editSelectRow, setEditSelectRow] = useState(selectedRow);
+  const [isModalEditVisible, setIsModalEditVisible] = useState(isVisibleEditForm);
   const [dataTrucban, setDataTrucban] = useState([]);
   const [dataTrucchihuy, setDataTrucchihuy] = useState([]);
   const [dataTrucchihuyBTL, setDataTrucchihuyBTL] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [form] = Form.useForm();
+
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
@@ -51,19 +52,46 @@ const NewHandOverReportModal = ({
 
     fetchData();
   }, []);
-  return loading ? (
-    <Spin tip="Đang tải..." />
-  ) : error ? (
-    <Alert message="Lỗi" description={error} type="error" showIcon />
-  ) : (
+  const handleCancel = () => {
+    setIsModalEditVisible(false);
+  };
+  const handleEditForm = async () => {
+    try {
+      form.validateFields().then(async (values) => {
+        // Convert 'thoiGian' to string
+        editSelectRow.thoigian = values.thoigian.format("YYYY-MM-DD");
+        setEditSelectRow([...editSelectRow, values]);
+        setIsModalEditVisible(false);
+        form.resetFields();
+        // Convert values to
+        const data = convertToB(editSelectRow);
+        const token = localStorage.getItem("access_token");
+        const response = await axios.put(
+          "http://192.168.3.100:20000/giaobanngay/update",
+          data,
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
+        if (response.status === 200) {
+          alert("Thêm dữ liệu thành công");
+        } else {
+          alert("Có lỗi khi thêm dữ liệu");
+        }
+      });
+    } catch (error) {
+      alert("Có lỗi khi thêm dữ liệu");
+    }
+  };
+  return (
     <Modal
       title="Báo cáo mới"
-      visible={isVisible}
+      visible={isVisibleEditForm}
       onCancel={handleCancel}
       footer={null}
       className="modal-add"
     >
-      <Form form={form} onFinish={handleOk}>
+      <Form form={form} onFinish={handleEditForm}>
         <Form.Item
           name="thoigian"
           label="Thời gian báo cáo"
@@ -77,9 +105,12 @@ const NewHandOverReportModal = ({
           label="Trực chỉ huy BTL"
           rules={[{ required: true }]}
         >
-          <Select placeholder="Trực chỉ huy BTL">
+          <Select
+            placeholder="Trực chỉ huy BTL"
+            // defaultValue={editSelectRow.truc_CH_BTL || " "}
+          >
             {dataTrucchihuyBTL.map((item, index) => (
-              <Option key={index} value={item.capbac + " "+item.hoten}>
+              <Option key={index} value={item.capbac + " " + item.hoten}>
                 {item.capbac} {item.hoten}
               </Option>
             ))}
@@ -91,9 +122,12 @@ const NewHandOverReportModal = ({
           label="Trực chỉ huy trung tâm"
           rules={[{ required: true }]}
         >
-          <Select placeholder="Trực chỉ huy trung tâm">
+          <Select
+            placeholder="Trực chỉ huy trung tâm"
+            // defaultValue={editSelectRow.truc_CH_TT  || " "}
+          >
             {dataTrucchihuy.map((item, index) => (
-              <Option key={index} value={item.capbac + " "+item.hoten}>
+              <Option key={index} value={item.capbac + " " + item.hoten}>
                 {item.capbac} {item.hoten}
               </Option>
             ))}
@@ -105,9 +139,12 @@ const NewHandOverReportModal = ({
           label="Trực ban tác chiến"
           rules={[{ required: true }]}
         >
-          <Select placeholder="Trực ban tác chiến">
+          <Select
+            placeholder="Trực ban tác chiến"
+            // defaultValue={editSelectRow.trucban_tacchien || " "}
+          >
             {dataTrucban.map((item, index) => (
-              <Option key={index} value={item.capbac+ " "+item.hoten}>
+              <Option key={index} value={item.capbac + " " + item.hoten}>
                 {item.capbac} {item.hoten}
               </Option>
             ))}
@@ -119,9 +156,12 @@ const NewHandOverReportModal = ({
           label="Trực ban nội vụ"
           rules={[{ required: true }]}
         >
-          <Select placeholder="Trực ban nội vụ">
+          <Select
+            placeholder="Trực ban nội vụ"
+            // defaultValue={editSelectRow.trucban_noivu || " "}
+          >
             {dataTrucban.map((item, index) => (
-              <Option key={index} value={item.capbac+ " "+ item.hoten}>
+              <Option key={index} value={item.capbac + " " + item.hoten}>
                 {item.capbac} {item.hoten}
               </Option>
             ))}
@@ -141,7 +181,7 @@ const NewHandOverReportModal = ({
           label="Nội dung vũ khí"
           rules={[{ required: true }]}
         >
-          <Input.TextArea />
+          <Input.TextArea  />
         </Form.Item>
 
         <Form.Item
@@ -149,7 +189,7 @@ const NewHandOverReportModal = ({
           label="Nội dung kết quả"
           rules={[{ required: true }]}
         >
-          <Input.TextArea />
+          <Input.TextArea  />
         </Form.Item>
 
         <Form.Item
@@ -160,14 +200,14 @@ const NewHandOverReportModal = ({
           <Input.TextArea />
         </Form.Item>
         <Form.Item name="noidung_ykien" rules={[{ required: true }]}>
-          <Input.TextArea />
+          <Input.TextArea  />
         </Form.Item>
         <Form.Item
           name="noidung_ketluan"
           label="Nội dung kết luận"
           rules={[{ required: true }]}
         >
-          <Input.TextArea />
+          <Input.TextArea  />
         </Form.Item>
 
         <Form.Item
@@ -175,7 +215,7 @@ const NewHandOverReportModal = ({
           label="Nội dung kế hoạch BTL"
           rules={[{ required: true }]}
         >
-          <Input.TextArea />
+          <Input.TextArea  />
         </Form.Item>
 
         <Form.Item
@@ -183,7 +223,7 @@ const NewHandOverReportModal = ({
           label="Nội dung chỉ đạo BTL"
           rules={[{ required: true }]}
         >
-          <Input.TextArea />
+          <Input.TextArea  />
         </Form.Item>
 
         <Form.Item>
@@ -195,4 +235,4 @@ const NewHandOverReportModal = ({
     </Modal>
   );
 };
-export default NewHandOverReportModal;
+export default EditHandOverReportModal;

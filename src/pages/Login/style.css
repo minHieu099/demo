@@ -1,4 +1,4 @@
-body {
+.login_form_wrapped {
     background: linear-gradient(to bottom, #ff7e5f, #feb47b);
     display: flex;
     justify-content: center;

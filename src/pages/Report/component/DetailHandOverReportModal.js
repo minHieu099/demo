@@ -7,6 +7,7 @@ const DetailHandOverReportModal = ({
   handleCancel,
   selectedRow,
 }) => {
+  console.log(selectedRow)
   return (
     <Modal
       title="Thông tin chi tiết"
