@@ -4,8 +4,9 @@ import { Form, Input, Button, message } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './style.css';
+import logoImg from './logo.png';
 
-const Login= () => {
+const Login = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
 
@@ -31,19 +32,28 @@ const Login= () => {
   };
 
   return (
-    <Form onFinish={onFinish}>
-      <Form.Item name="username">
-        <Input placeholder="Username" />
-      </Form.Item>
-      <Form.Item name="password">
-        <Input.Password placeholder="Password" />
-      </Form.Item>
-      <Form.Item>
-        <Button type="primary" htmlType="submit" loading={loading}>
-          Đăng nhập
-        </Button>
-      </Form.Item>
-    </Form>
+    <div>
+      <div className='container'>
+        <img className="logo" src={logoImg} alt="Logo" />
+        <h3>CHUYỂN ĐỔI SỐ</h3>
+        <Form onFinish={onFinish}>
+          <Form.Item name="username">
+            <Input placeholder="Username" />
+          </Form.Item>
+          <Form.Item name="password">
+            <Input.Password placeholder="Password" />
+          </Form.Item>
+          <Form.Item>
+            <Button type="primary" htmlType="submit" loading={loading}>
+              Đăng nhập
+            </Button>
+          </Form.Item>
+        </Form>
+
+      </div>
+    </div>
+
+
   );
 }
 export default Login;

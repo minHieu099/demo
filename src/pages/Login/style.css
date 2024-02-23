@@ -1,18 +1,29 @@
 body {
-    background: linear-gradient(to bottom, #ff7e5f, #feb47b);
+    background-image: url("/public/bg_login.jpg");
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
   }
-  
+  h3{
+    margin-top: 0;
+  }
+  .container{
+    text-align: center;
+    width: 300px;
+    background-color: white;
+    padding: 30px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  }
   .login-form-container {
     background: white;
     width: 300px;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+    box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.1);
   }
   
   .login-form .ant-form-item {
@@ -31,5 +42,12 @@ body {
     border-color: #ff7e5f;
     width: 100%;
     font-weight: bold;
+  }
+  .logo{
+    height: 110px;
+    margin-bottom: 20px;
+  }
+  .container div:first-child{
+    margin-bottom: 3px;
   }
   
