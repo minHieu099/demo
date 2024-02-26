@@ -11,7 +11,8 @@ import data from "../../data/data.json";
 import axios from "axios";
 import { Spin, Alert } from "antd";
 import "./style.scss";
-import renderDoc from "./Export/renderDoc";
+
+import renderGbnTT from "./Export/giaobanNgayTT";
 import ShiftHandOverReportTable from "./component/ShiftHandOverReportTable"; // Import ReportTable vào
 import DetailHandOverReportModal from "./component/DetailHandOverReportModal"; // Import DetailReportModal
 
@@ -58,8 +59,10 @@ const ShiftHandOverReport = () => {
   };
 
   const handleExport = (record) => {
-    //Xử lý
-    alert("hàm đang xây dựng");
+    const doc = renderGbnTT(record);
+    Packer.toBlob(doc).then((blob) => {
+      saveAs(blob, `Bàn giao kíp trực ngày ${record.thoigian}.docx`);
+    });
   };
   return loading ? (
     <Spin tip="Đang tải..." />

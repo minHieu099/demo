@@ -11,7 +11,7 @@ import data from "../../data/data.json";
 import axios from "axios";
 import { Spin, Alert } from "antd";
 import "./style.scss";
-import renderDoc from "./Export/renderDoc";
+import renderGbnBTL from "./Export/giaobanNgayBTL";
 import HandOverReportTable from "./component/HandOverReportTable"; // Import ReportTable vào
 import NewHandOverReportModal from "./component/NewHandOverReportModal"; // Import NewReportModal
 import DetailHandOverReportModal from "./component/DetailHandOverReportModal"; // Import DetailReportModal
@@ -38,7 +38,7 @@ const HandOverReport = () => {
   };
 
   const handleExport = (record) => {
-    const doc = renderDoc(record);
+    const doc = renderGbnBTL(record);
     Packer.toBlob(doc).then((blob) => {
       saveAs(blob, `Giao ban ngày ${record.thoigian}.docx`);
     });

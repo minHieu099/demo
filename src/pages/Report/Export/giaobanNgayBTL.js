@@ -1,5 +1,5 @@
 import { Document, Paragraph, AlignmentType, TextRun, Table, TableCell, TableRow, WidthType, BorderStyle } from "docx";
-import contentText from "./contentText";
+import formatParagraph, {dotTab} from "./formatParagraph";
 
 // const strToList_Quanso = (quanSo) => {
 //     let mangQuanSo = quanSo.split(";").map(item => item.trim() + '; ');
@@ -26,7 +26,7 @@ import contentText from "./contentText";
 //     return mangVuKhi;
 // }
 
-let renderDoc = (data) => {
+let renderGbnBTL = (data) => {
     const doc = new Document({
         sections: [
             {
@@ -178,7 +178,6 @@ let renderDoc = (data) => {
                             size: 100,
                             type: WidthType.PERCENTAGE,
                         },
-
                         rows: [
                             new TableRow({
                                 children: [
@@ -203,8 +202,8 @@ let renderDoc = (data) => {
                                                 ],
                                             }),
                                             new Paragraph({
-                                                children: contentText([data.noidung_quanso])
-                                                ,
+                                                children: formatParagraph(6,[data.noidung_quanso]),
+                                                tabStops: dotTab,
                                             }),
                                             // new Paragraph({
                                             //     children: [
@@ -260,7 +259,8 @@ let renderDoc = (data) => {
                                                 ],
                                             }),
                                             new Paragraph({
-                                                children: contentText([data.noidung_vukhi]),
+                                                children: formatParagraph(2,[data.noidung_vukhi]),
+                                                tabStops: dotTab
                                             }),
                                             // new Paragraph({
                                             //     children: [
@@ -288,31 +288,41 @@ let renderDoc = (data) => {
                                                 ],
                                             }),
                                             new Paragraph({
+                                                children: formatParagraph(6,[data.noidung_ketqua]),
+                                                tabStops: dotTab,
+
+                                            }),
+                                            new Paragraph({
                                                 children: [
                                                     new TextRun({
-                                                        text: data.noidung_ketqua,
+                                                        text: "VI. Kết luận của trực chỉ huy Trung tâm",
                                                         size: 28,
+                                                        bold: true,
                                                     }),
                                                 ],
                                             }),
-                                            // new Paragraph({
-                                            //     children: [
-                                            //         new TextRun({
-                                            //             text: "1.Điểm mạnh:",
-                                            //             size: 28,
-                                            //             bold: true,
-                                            //         }),
-                                            //     ],
-                                            // }),
-                                            // new Paragraph({
-                                            //     children: [
-                                            //         new TextRun({
-                                            //             text: "2.Tồn tại:",
-                                            //             size: 28,
-                                            //             bold: true,
-                                            //         }),
-                                            //     ],
-                                            // }),
+                                            new Paragraph({
+                                                children: formatParagraph(12,[data.noidung_ketluan]),
+                                                tabStops: dotTab,
+
+                                            }),
+                                            new Paragraph({
+                                                children: [
+                                                    new TextRun({
+                                                        text: "VII. Dự kiến kế hoạch ngày tới Bộ Tư Lệnh",
+                                                        size: 28,
+                                                        bold: true,
+                                                    }),
+                                                ],
+                                            }),
+                                            new Paragraph({
+                                                children: formatParagraph(11,[data.noidung_KH_BTL]),
+                                                tabStops: dotTab,
+
+                                            }),
+
+
+                                          
                                         ],
                                     }),
                                     new TableCell({
@@ -327,12 +337,8 @@ let renderDoc = (data) => {
                                                 ],
                                             }),
                                             new Paragraph({
-                                                children: [
-                                                    new TextRun({
-                                                        text: data.noidung_dukien,
-                                                        size: 28,
-                                                    }),
-                                                ],
+                                                children:formatParagraph(4,[data.noidung_dukien]),
+                                                tabStops: dotTab
                                             }),
                                             new Paragraph({
                                                 children: [
@@ -344,6 +350,10 @@ let renderDoc = (data) => {
                                                 ],
                                             }),
                                             new Paragraph({
+                                                children:formatParagraph(5,[data.noidung_dukien]),
+                                                tabStops: dotTab
+                                            }),
+                                            new Paragraph({
                                                 children: [
                                                     new TextRun({
                                                         text: "V. Ý kiến của các cơ quan, đơn vị",
@@ -353,10 +363,29 @@ let renderDoc = (data) => {
                                                 ],
                                             }),
                                             new Paragraph({
+                                                children: formatParagraph(6,[data.noidung_ykien]),
+                                                tabStops: dotTab
+                                            }),
+                                            new Paragraph({
                                                 children: [
                                                     new TextRun({
-                                                        text: data.noidung_ykien,
+                                                        text: "VIII. Ý kiến chỉ đạo chỉ huy Bộ Tư lệnh",
                                                         size: 28,
+                                                        bold: true,
+                                                    }),
+                                                ],
+                                            }),
+                                            new Paragraph({
+                                                children: formatParagraph(12,[data.noidung_chidao_BTL]),
+                                                tabStops: dotTab
+                                            }),
+                                            new Paragraph({
+                                                alignment: AlignmentType.CENTER,
+                                                children: [
+                                                    new TextRun({
+                                                        text: "TRỰC CHỈ HUY",
+                                                        size: 28,
+                                                        bold: true,
                                                     }),
                                                 ],
                                             }),
@@ -369,7 +398,8 @@ let renderDoc = (data) => {
                         margins: {
                             left: 200,
                             top: 100,
-                            bottom: 100
+                            bottom: 100,
+                     
                         },
                     }),
 
@@ -381,7 +411,7 @@ let renderDoc = (data) => {
 }
 
 
-export default renderDoc;
+export default renderGbnBTL;
 
 
 
