@@ -1,9 +1,10 @@
 // Login.js
-import React, { useState } from "react";
-import { Form, Input, Button, message } from "antd";
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
-import "./style.css";
+import React, { useState } from 'react';
+import { Form, Input, Button, message } from 'antd';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import './style.css';
+import logoImg from './logo.png';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -35,21 +36,28 @@ const Login = () => {
   };
 
   return (
-    <div className="login_form_wrapped">
-      <Form onFinish={onFinish} className="login-form-container">
-        <Form.Item name="username">
-          <Input placeholder="Username" />
-        </Form.Item>
-        <Form.Item name="password">
-          <Input.Password placeholder="Password" />
-        </Form.Item>
-        <Form.Item>
-          <Button type="primary" htmlType="submit" loading={loading}>
-            Đăng nhập
-          </Button>
-        </Form.Item>
-      </Form>
+    <div>
+      <div className='container'>
+        <img className="logo" src={logoImg} alt="Logo" />
+        <h3>CHUYỂN ĐỔI SỐ</h3>
+        <Form onFinish={onFinish}>
+          <Form.Item name="username">
+            <Input placeholder="Username" />
+          </Form.Item>
+          <Form.Item name="password">
+            <Input.Password placeholder="Password" />
+          </Form.Item>
+          <Form.Item>
+            <Button type="primary" htmlType="submit" loading={loading}>
+              Đăng nhập
+            </Button>
+          </Form.Item>
+        </Form>
+
+      </div>
     </div>
+
+
   );
 };
 export default Login;

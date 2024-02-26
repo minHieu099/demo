@@ -159,7 +159,7 @@ const NewHandOverReportModal = ({
         >
           <Input.TextArea />
         </Form.Item>
-        <Form.Item name="noidung_ykien" rules={[{ required: true }]}>
+        <Form.Item name="noidung_ykien" label="Nội dung ý kiến" rules={[{ required: true }]}>
           <Input.TextArea />
         </Form.Item>
         <Form.Item

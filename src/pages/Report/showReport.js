@@ -11,12 +11,12 @@ const ShowReport = () => {
   };
 
   return (
-    <div>
+    <div style={{height:"100%", marginTop: "64px"}}>
       <Select defaultValue="Report1" style={{ width: 120 }} onChange={handleChange}>
         <Select.Option value="Report1">Nội dung giao ban</Select.Option>
         <Select.Option value="Report2">Bàn giao kíp trực</Select.Option>
       </Select>
-      {report === 'Report1' ? <HandOverReport /> : <ShiftHandOverReport />}
+      {report === 'Report1' ? <HandOverReport /> : report === 'Report2' ? <ShiftHandOverReport /> : null}
     </div>
   );
 };
