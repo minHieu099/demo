@@ -32,7 +32,7 @@ const HandOverReportTable = ({ reportInfo, handleDetail, handleExport,handleEdit
           <Button type="link" onClick={() => handleDetail(record)} className="icon-items">
             <EyeOutlined />
           </Button>
-          <Button icon={<EditOutlined />} type="link" onClick={() => alert("Chức năng chưa xử lý")} className="icon-items"/>
+          <Button icon={<EditOutlined />} type="link" onClick={() => handleEdit(record)} className="icon-items"/>
           <Button icon={<DeleteOutlined />} className="icon-items"/>
           <Button icon={<FileTextOutlined />} type="link" onClick={() => handleExport(record)} className="icon-items" />
         </span>

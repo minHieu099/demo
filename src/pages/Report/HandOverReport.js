@@ -50,7 +50,8 @@ const HandOverReport = () => {
   const handleDetailOk = () => {
     setIsModalDetailVisible(false);
   };
-  const showEditModal = () => {
+  const showEditModal = (record) => {
+    setSelectedRow(record);
     setIsModalEditVisible(true);
   };
 
@@ -140,7 +141,7 @@ const HandOverReport = () => {
       <EditHandOverReportModal
         selectedRow={selectedRow}
         isVisibleEditForm={isModalEdit}
-        
+        handleEditCancel={() => setIsModalEditVisible(false)}
       />
       <Button
         type="primary"

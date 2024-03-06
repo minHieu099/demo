@@ -1,0 +1,37 @@
+.site-layout {
+    background: #fff;
+    &__content {
+      width: 100%;
+    }
+  }
+  
+  .site-layout .site-layout-background {
+    background: #fff;
+  }
+  
+  .logo {
+    height: 32px;
+    background: rgba(255, 255, 255, 0.2);
+    margin: 16px;
+  }
+  
+  .site-layout-background {
+    background: #fff;
+  }
+  
+  .site-layout .site-layout-background {
+    padding: 0 24px;
+  }
+  
+  .site-layout .site-layout-background .ant-layout-footer {
+    background: #f0f2f5;
+    text-align: center;
+  }
+  
+  .site-layout .site-layout-background .ant-layout-content {
+    min-height: 360px;
+    margin: 24px 16px;
+    padding: 24px;
+    background: #fff;
+  }
+  
