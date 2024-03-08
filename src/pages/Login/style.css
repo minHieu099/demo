@@ -9,7 +9,7 @@ body {
   h3{
     margin-top: 0;
   }
-  .container{
+  .container-login{
     text-align: center;
     width: 300px;
     background-color: white;
@@ -17,6 +17,7 @@ body {
     border: 2px solid #ccc;
     border-radius: 5px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    margin: auto;
   }
   .login-form-container {
     background: white;

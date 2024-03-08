@@ -17,13 +17,22 @@ const userMenu = (
 
 const HeaderBar = () => {
   return (
-    <Header className="site-layout-background" style={{ padding: 0, display: 'flex', justifyContent: 'flex-end', paddingRight: 20, coLor:'white'}}>
-      <Badge count={5} style={{ marginRight: 20 }}>
-        <BellOutlined style={{ fontSize: 20 }} />
-      </Badge>
-      <Dropdown overlay={userMenu} trigger={['click']}>
-        <Avatar icon={<UserOutlined />} />
-      </Dropdown>
+
+    <Header className="site-layout-background" style={{ padding: "20px 20px 0 0", display: 'flex', justifyContent: 'space-between', coLor: 'white' }}>
+      <img alt="logo" src="img/logo.png" style={{width: "80px", heitght: "80px", marginLeft: "40px", marginBottom:"10px"}}/>
+      <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+        <span style= {{marginRight: "20px", cursor: "pointer"}}>
+          <Badge count={5} style={{ marginRight: 20 }}>
+            <BellOutlined style={{ fontSize: 20, color: "white" }} />
+          </Badge>
+        </span>
+        <span style= {{cursor: "pointer"}}>
+          <Dropdown overlay={userMenu} trigger={['click']}>
+            <Avatar icon={<UserOutlined />} />
+          </Dropdown>
+        </span>
+      </div>
+
     </Header>
   );
 };

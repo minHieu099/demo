@@ -12,7 +12,7 @@ const ShowReport = () => {
 
   return (
     <div style={{height:"100%", marginTop: "64px"}}>
-      <Select defaultValue="Report1" style={{ width: 120 }} onChange={handleChange}>
+      <Select defaultValue="Report1" style={{ width: 200 }} onChange={handleChange}>
         <Select.Option value="Report1">Nội dung giao ban</Select.Option>
         <Select.Option value="Report2">Bàn giao kíp trực</Select.Option>
       </Select>
