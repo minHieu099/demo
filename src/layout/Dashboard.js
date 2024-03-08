@@ -10,7 +10,7 @@ const { Content, Footer } = Layout;
 
 const Dashboard = () => {
   return (
-    <Layout style={{ minHeight: "100vh" }}>
+    <Layout style={{ minHeight: "100vh"}}>
       <HeaderBar />
 
       <Layout className="site-layout">
