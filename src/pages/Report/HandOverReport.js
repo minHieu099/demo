@@ -58,7 +58,7 @@ const HandOverReport = () => {
   const handleDetailCancel = () => {
     setIsModalDetailVisible(false);
   };
-  const handleOk = async () => {
+  const handleAddOk = async () => {
     try {
       form.validateFields().then(async (values) => {
         // Convert 'thoiGian' to string
@@ -66,7 +66,6 @@ const HandOverReport = () => {
         setListGiaoban([...listGiaoban, values]);
         setIsModalCreateVisible(false);
         form.resetFields();
-
         const token = localStorage.getItem("access_token");
         const response = await axios.post(
           "http://192.168.3.100:20000/giaobanngay/new",
@@ -116,7 +115,7 @@ const HandOverReport = () => {
     <div style={{ margin: "16px" }}>
       <NewHandOverReportModal
         isVisible={isModalCreateVisible}
-        handleOk={handleOk}
+        handleOk={handleAddOk}
         handleCancel={() => setIsModalCreateVisible(false)}
         form={form}
       />

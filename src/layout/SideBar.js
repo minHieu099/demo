@@ -1,44 +1,40 @@
-import React, { useState } from 'react';
-import { Layout, Menu } from 'antd';
+import React, { useState } from "react";
+import { Layout, Menu } from "antd";
+import { Link } from "react-router-dom";
 import {
   DesktopOutlined,
   PieChartOutlined,
   FileOutlined,
-  TeamOutlined,
+  ApartmentOutlined,
   UserOutlined,
-} from '@ant-design/icons';
-
+} from "@ant-design/icons";
+import DeparmentManagementScreen from "../pages/DepartmentManagement/DeparmentManagementScreen";
+import EmployeeManagementScreen from "../pages/EmployeeManagement/EmployeeManagementScreen";
 const { Sider } = Layout;
 const { SubMenu } = Menu;
 
 const Sidebar = () => {
   const [collapsed, setCollapsed] = useState(false);
 
-  const onCollapse = collapsed => {
+  const onCollapse = (collapsed) => {
     console.log(collapsed);
     setCollapsed(collapsed);
   };
 
   return (
-    <Sider collapsible collapsed={collapsed} onCollapse={onCollapse} >
-      <div className="logo" />
-      <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
+    <Sider collapsible collapsed={collapsed} onCollapse={onCollapse}>
+      {/* <div className="logo" /> */}
+      <Menu theme="dark" defaultSelectedKeys={["1"]} mode="inline">
         <Menu.Item key="1" icon={<PieChartOutlined />}>
-          Giao ban online
+          <Link to="/online-meetings">Giao ban online</Link>
         </Menu.Item>
-        <Menu.Item key="2" icon={<DesktopOutlined />}>
-          Đổi ban
+        <Menu.Item key="2" icon={<ApartmentOutlined />}>
+          <Link to="/manage-departments">Quản lý đơn vị</Link>
         </Menu.Item>
-        <SubMenu key="sub1" icon={<UserOutlined />} title="Người dùng">
-          <Menu.Item key="3">Nguyễn Trọng Phương</Menu.Item>
-          <Menu.Item key="4">Trịnh Thành Trung</Menu.Item>
-          <Menu.Item key="5">Lê Thị Minh Châu</Menu.Item>
-        </SubMenu>
-        <SubMenu key="sub2" icon={<TeamOutlined />} title="Đội">
-          <Menu.Item key="6">Đội 5</Menu.Item>
-          <Menu.Item key="8">Đội 6</Menu.Item>
-        </SubMenu>
-        <Menu.Item key="9" icon={<FileOutlined />} />
+        <Menu.Item key="3" icon={<UserOutlined />}>
+          <Link to="/manage-staff">Quản lý cán bộ</Link>
+        </Menu.Item>
+
       </Menu>
     </Sider>
   );

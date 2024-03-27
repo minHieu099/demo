@@ -1,39 +1,34 @@
-
-
 import React from "react";
 import { Layout } from "antd";
 import Sidebar from "./SideBar";
 import HeaderBar from "./HeaderBar";
 import "./style.scss";
 import ShowReport from "../pages/Report/showReport";
-const { Content, Footer } = Layout;
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import EmployeeManagementScreen from "../pages/EmployeeManagement/EmployeeManagementScreen";
+import DeparmentManagementScreen from "../pages/DepartmentManagement/DeparmentManagementScreen";
 
+import PrivateRoute from "../router/PrivateRouter";
+const { Content, Footer } = Layout;
+ 
 const Dashboard = () => {
   return (
-
-    <Layout style={{ minHeight: "100vh", width: "100%" }}>
-      <HeaderBar />
-
-      <Layout className="site-layout">
-
-
-        <Sidebar />
-        <div className="site-layout__content">
-          <Content
-            className="site-layout__content"
-          >
-            <div
-              className="site-layout-background"
-              style={{ padding: 24, minHeight: 360 }}
-            >
-              <ShowReport />
-            </div>
-          </Content>
-        </div>
-
-      </Layout>
-    </Layout>
-
+    <Content style={{ margin: "0 16px" }}>
+      <Routes>
+        <Route
+          path="/online-meetings"
+          element={<PrivateRoute element={ShowReport} />}
+        />
+        <Route
+          path="/manage-departments"
+          element={<PrivateRoute element={DeparmentManagementScreen} />}
+        />
+        <Route
+          path="/manage-staff"
+          element={<PrivateRoute element={EmployeeManagementScreen} />}
+        />
+      </Routes>
+    </Content>
   );
 };
 

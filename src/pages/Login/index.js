@@ -24,7 +24,7 @@ const Login = () => {
       if (true) {
         localStorage.setItem("access_token", response.data.access_token);
         message.success("Đăng nhập thành công!");
-        navigate("/report");
+        navigate("/online-meetings");
       } else {
         message.error("Đăng nhập thất bại!");
       }
