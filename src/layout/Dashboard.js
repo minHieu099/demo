@@ -6,7 +6,7 @@ import "./style.scss";
 import ShowReport from "../pages/Report/showReport";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import EmployeeManagementScreen from "../pages/EmployeeManagement/EmployeeManagementScreen";
-import DeparmentManagementScreen from "../pages/DepartmentManagement/DeparmentManagementScreen";
+import DeparmentManagementScreen from "../pages/DepartmentManagement";
 
 import PrivateRoute from "../router/PrivateRouter";
 const { Content, Footer } = Layout;

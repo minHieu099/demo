@@ -10,7 +10,7 @@ import {
 import { Layout } from "antd";
 import Login from "./pages/Login/index";
 import EmployeeManagementScreen from "./pages/EmployeeManagement/EmployeeManagementScreen";
-import DeparmentManagementScreen from "./pages/DepartmentManagement/DeparmentManagementScreen";
+import DeparmentManagementScreen from "./pages/DepartmentManagement";
 import PrivateRoute from "./router/PrivateRouter";
 
 import HeaderBar from "./layout/HeaderBar";

@@ -1,0 +1,102 @@
+[
+  {
+    "id": 1,
+    "tendonvi": "Cụm 21",
+    "canbo": [
+      {
+        "id": 2,
+        "hoten": "Phạm Xuân Hòa",
+        "chucvu": "Đội trưởng",
+        "capbac": "Đại úy"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "tendonvi": "Cụm 22",
+    "canbo": [
+      {
+        "id": 1,
+        "hoten": "Nguyễn Trọng Phương",
+        "chucvu": "Đội trưởng",
+        "capbac": "Đại úy"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "tendonvi": "Cụm 23",
+    "canbo": [
+      {
+        "id": 3,
+        "hoten": "Lê Huỳnh",
+        "chucvu": "Đội trưởng",
+        "capbac": "Thượng úy"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "tendonvi": "Phòng Tham mưu",
+    "canbo": [
+      {
+        "id": 4,
+        "hoten": "Bùi Đức Mạnh",
+        "chucvu": "Trợ lý Trinh sát",
+        "capbac": "Thiếu úy"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "tendonvi": "Phòng Chính trị",
+    "canbo": []
+  },
+  {
+    "id": 6,
+    "tendonvi": "Phòng Hậu cần-Kỹ thuật",
+    "canbo": []
+  },
+  {
+    "id": 7,
+    "tendonvi": "Thủ trưởng Trung tâm",
+    "canbo": [
+      {
+        "id": 5,
+        "hoten": "Trần Ngọc Anh",
+        "chucvu": "Chỉ huy trưởng Trung tâm",
+        "capbac": "Đại tá"
+      },
+      {
+        "id": 6,
+        "hoten": "Nguyễn Ngọc Huy",
+        "chucvu": "Phó Chỉ huy trưởng Trung tâm",
+        "capbac": "Trung tá"
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "tendonvi": "Thủ trưởng BTL",
+    "canbo": [
+      {
+        "id": 7,
+        "hoten": "Nguyễn Tiền Giang",
+        "chucvu": "Phó Tư lệnh - TMT",
+        "capbac": "Đại tá"
+      },
+      {
+        "id": 8,
+        "hoten": "Đặng Đức Đông",
+        "chucvu": "Phó Tư lệnh",
+        "capbac": "Thiếu tướng"
+      },
+      {
+        "id": 9,
+        "hoten": "Nguyễn Tùng Hưng",
+        "chucvu": "Phó Tư lệnh",
+        "capbac": "Thiếu tướng"
+      }
+    ]
+  }
+]

@@ -1,33 +1,6 @@
-const { Document, Paragraph, AlignmentType, TextRun, Table, TableCell, TableRow, PageBreak, WidthType, BorderStyle, TabStopPosition, TabStopType, PositionalTabLeader } = require("docx");
-const { formatParagraph } = require("./formatParagraph");
-const data = [
-    {
-        "id": 2,
-        "thoigian": "Ngày 01 tháng 01 năm 2024",
-        "ten_bai": "Huấn luyện TCTT",
-        "nguoi_giang": "Trung tá fsdfsdaf",
-        "dia_diem": "Hội trường T286",
-        "noidung_pheduyet": "aaaaaaaaaaaaaaaaaaa",
-        "ketluan": "bbbbbbbbbbbbbbb",
-        "doitruong": "Thiếu tá fsdgfd",
-        "mucdich": "fjlkaljfkls",
-        "yeucau": "54",
-        "noidung": "-2321321",
-        "thoigian_thongqua": "90",
-        "giangthu": "1",
-        "diadiem_thongqua": "Xử lí FMCfhjsdkljfkldjsf sdjlkfsdfkls",
-        "tailieu": "ABC",
-        "vatchat": "1",
-        "thutuc": "Xử lí FMCfhjsdkljfkldjsf sdjlkfsdfkls",
-        "phobien_ydinh": "cho học viên hiểu",
-        "thongqua_ydinh": "ABC",
-        "thongqua_thuchanh": "XYZ",
-        "thongqua_thaoluan": "Xử lí FMCfhjsdkljfkldjsf sdjlkfsdfkls",
-        "thongqua_ketluan": "Xử lí FMCfhjsdkljfkldjsf sdjlkfsdfkls",
-        "thongqua_nhanxet": "ABC",
-        "thongqua_trienkhai": "Phải tiến hành"
-    }
-];
+import { Document, Paragraph, AlignmentType, TextRun, Table, TableCell, TableRow, PageBreak, WidthType, BorderStyle, TabStopPosition, TabStopType, PositionalTabLeader } from "docx";
+import formatParagraph from "./formatParagraph";
+
 const dotTab = [
     {
         type: TabStopType.LEFT,
@@ -39,7 +12,7 @@ const spaCing = {
     line: 276
 }
 let renderThongquaGAHL = (data) => {
-    return doc = new Document({
+    const doc = new Document({
 
         sections: [
             {
@@ -700,10 +673,10 @@ let renderThongquaGAHL = (data) => {
                 ]
             }]
     })
+    return doc;
 }
 
-
-module.exports = renderThongquaGAHL;
+export default renderThongquaGAHL;
 
 
 

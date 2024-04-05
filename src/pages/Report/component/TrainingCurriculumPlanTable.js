@@ -40,7 +40,7 @@ const TrainingCurriculumPlanTable = ({
         <span>
           <Button
             type="link"
-            onClick={() => handleDetail(record)}
+            onClick={() =>  alert("Chức năng chưa xử lý")}
             className="icon-items"
           >
             <EyeOutlined />
@@ -70,7 +70,7 @@ const TrainingCurriculumPlanTable = ({
         dataSource={data}
         columns={columns}
       />
-      ;
+      
     </div>
   )
 };

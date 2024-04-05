@@ -80,7 +80,7 @@ const ShiftHandOverReportTable = ({
         dataSource={reportInfo}
         columns={columns}
       />
-      ;
+      
     </div>
   );
 };

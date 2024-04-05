@@ -18,16 +18,17 @@ import DetailHandOverReportModal from "./component/DetailHandOverReportModal"; /
 import EditHandOverReportModal from "./component/EditHandOverReportModal";
 import { saveAs } from "file-saver";
 import { Packer } from "docx";
-
+import { convertToB } from "../../utils";
 const HandOverReport = () => {
   const [isModalCreateVisible, setIsModalCreateVisible] = useState(false);
   const [isModalDetail, setIsModalDetailVisible] = useState(false);
   const [isModalEdit, setIsModalEditVisible] = useState(false);
   const [listGiaoban, setListGiaoban] = useState([]);
   const [selectedRow, setSelectedRow] = useState(null);
-  const [form] = Form.useForm();
+  const [formAdd] = Form.useForm();
+  const [formEdit] = Form.useForm();
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState(false);
   const showCreateModal = () => {
     setIsModalCreateVisible(true);
   };
@@ -60,12 +61,13 @@ const HandOverReport = () => {
   };
   const handleAddOk = async () => {
     try {
-      form.validateFields().then(async (values) => {
+      formAdd.validateFields().then(async (values) => {
         // Convert 'thoiGian' to string
-        values.thoigian = values.thoigian.format("YYYY-MM-DD");
+
         setListGiaoban([...listGiaoban, values]);
+        values.thoigian = values.thoigian.format("YYYY-MM-DD");
         setIsModalCreateVisible(false);
-        form.resetFields();
+        formAdd.resetFields();
         const token = localStorage.getItem("access_token");
         const response = await axios.post(
           "http://192.168.3.100:20000/giaobanngay/new",
@@ -76,6 +78,36 @@ const HandOverReport = () => {
         );
         if (response.status === 200) {
           alert("Thêm dữ liệu thành công");
+        } else {
+          alert("Có lỗi khi thêm dữ liệu");
+        }
+      });
+    } catch (error) {
+      alert("Có lỗi khi thêm dữ liệu");
+    }
+  };
+  const handleEditFormOk = async () => {
+    try {
+      formEdit.validateFields().then(async (values) => {
+        // Convert 'thoiGian' to string
+
+        setListGiaoban([...listGiaoban, values]);
+        values.thoigian = values.thoigian.format("YYYY-MM-DD");
+        formEdit.resetFields();
+        values["id"]=selectedRow.id;
+        const data = convertToB(values)
+        const token = localStorage.getItem("access_token");
+        console.log(data)
+        const response = await axios.put(
+          "http://192.168.3.100:20000/giaobanngay/update",
+          data,
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
+        if (response.status === 200) {
+          alert("Sửa dữ liệu thành công");
+          setIsModalEditVisible(false);
         } else {
           alert("Có lỗi khi thêm dữ liệu");
         }
@@ -117,7 +149,7 @@ const HandOverReport = () => {
         isVisible={isModalCreateVisible}
         handleOk={handleAddOk}
         handleCancel={() => setIsModalCreateVisible(false)}
-        form={form}
+        form={formAdd}
       />
       <DetailHandOverReportModal
         isVisible={isModalDetail}
@@ -140,7 +172,9 @@ const HandOverReport = () => {
       <EditHandOverReportModal
         selectedRow={selectedRow}
         isVisibleEditForm={isModalEdit}
+        handleEditOk={handleEditFormOk}
         handleEditCancel={() => setIsModalEditVisible(false)}
+        form={formEdit}
       />
       <Button
         type="primary"

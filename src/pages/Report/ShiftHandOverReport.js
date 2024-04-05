@@ -84,7 +84,7 @@ const ShiftHandOverReport = () => {
         Thêm báo cáo
       </Button>
     </div>
-  );
+  )
 };
 
 export default ShiftHandOverReport;

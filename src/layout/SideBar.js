@@ -8,7 +8,7 @@ import {
   ApartmentOutlined,
   UserOutlined,
 } from "@ant-design/icons";
-import DeparmentManagementScreen from "../pages/DepartmentManagement/DeparmentManagementScreen";
+import DeparmentManagementScreen from "../pages/DepartmentManagement";
 import EmployeeManagementScreen from "../pages/EmployeeManagement/EmployeeManagementScreen";
 const { Sider } = Layout;
 const { SubMenu } = Menu;

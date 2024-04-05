@@ -6,43 +6,42 @@ import "../../../utils/index";
 import { convertToB } from "../../../utils/index";
 const { Option } = Select;
 
-const EditHandOverReportModal = ({ isVisibleEditForm, selectedRow,handleEditCancel }) => {
+const EditHandOverReportModal = ({ isVisibleEditForm, selectedRow,handleEditCancel,handleEditOk,form }) => {
   const [isModalEditVisible, setIsModalEditVisible] = useState(isVisibleEditForm);
   const [dataTrucban, setDataTrucban] = useState([]);
   const [dataTrucchihuy, setDataTrucchihuy] = useState([]);
   const [dataTrucchihuyBTL, setDataTrucchihuyBTL] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [form] = Form.useForm();
-  const handleEditForm = async () => {
-    try {
-      form.validateFields().then(async (values) => {
-        // Convert 'thoiGian' to string
-        values.thoigian = values.thoigian.format("YYYY-MM-DD");
+  // const handleEditForm = async () => {
+  //   try {
+  //     form.validateFields().then(async (values) => {
+  //       // Convert 'thoiGian' to string
+  //       values.thoigian = values.thoigian.format("YYYY-MM-DD");
         
-        form.resetFields();
-        values["id"]=selectedRow.id;
-        const data = convertToB(values)
-        const token = localStorage.getItem("access_token");
-        console.log(data)
-        const response = await axios.put(
-          "http://192.168.3.100:20000/giaobanngay/update",
-          data,
-          {
-            headers: { Authorization: `Bearer ${token}` },
-          }
-        );
-        if (response.status === 200) {
-          alert("Sửa dữ liệu thành công");
-          handleEditCancel();
-        } else {
-          alert("Có lỗi khi thêm dữ liệu");
-        }
-      });
-    } catch (error) {
-      alert("Có lỗi khi thêm dữ liệu");
-    }
-  };
+  //       form.resetFields();
+  //       values["id"]=selectedRow.id;
+  //       const data = convertToB(values)
+  //       const token = localStorage.getItem("access_token");
+  //       console.log(data)
+  //       const response = await axios.put(
+  //         "http://192.168.3.100:20000/giaobanngay/update",
+  //         data,
+  //         {
+  //           headers: { Authorization: `Bearer ${token}` },
+  //         }
+  //       );
+  //       if (response.status === 200) {
+  //         alert("Sửa dữ liệu thành công");
+  //         handleEditCancel();
+  //       } else {
+  //         alert("Có lỗi khi thêm dữ liệu");
+  //       }
+  //     });
+  //   } catch (error) {
+  //     alert("Có lỗi khi thêm dữ liệu");
+  //   }
+  // };
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
@@ -87,11 +86,12 @@ const EditHandOverReportModal = ({ isVisibleEditForm, selectedRow,handleEditCanc
       footer={null}
       className="modal-add"
     >
-      <Form form={form} onFinish={handleEditForm}>
+      <Form form={form} onFinish={handleEditOk}>
         <Form.Item
           name="thoigian"
           label="Thời gian báo cáo"
           rules={[{ required: true }]}
+          // initialValue={selectedRow?.thoigian}
         >
           <DatePicker showTime />
         </Form.Item>
@@ -100,6 +100,7 @@ const EditHandOverReportModal = ({ isVisibleEditForm, selectedRow,handleEditCanc
           name="truc_CH_BTL"
           label="Trực chỉ huy BTL"
           rules={[{ required: true }]}
+          initialValue={selectedRow?.truc_CH_BTL}
         >
           <Select
             placeholder="Trực chỉ huy BTL"
@@ -117,6 +118,7 @@ const EditHandOverReportModal = ({ isVisibleEditForm, selectedRow,handleEditCanc
           name="truc_CH_TT"
           label="Trực chỉ huy trung tâm"
           rules={[{ required: true }]}
+          initialValue={selectedRow?.truc_CH_TT}
         >
           <Select
             placeholder="Trực chỉ huy trung tâm"
@@ -134,6 +136,7 @@ const EditHandOverReportModal = ({ isVisibleEditForm, selectedRow,handleEditCanc
           name="trucban_tacchien"
           label="Trực ban tác chiến"
           rules={[{ required: true }]}
+          initialValue={selectedRow?.trucban_tacchien}
         >
           <Select
             placeholder="Trực ban tác chiến"
@@ -151,6 +154,7 @@ const EditHandOverReportModal = ({ isVisibleEditForm, selectedRow,handleEditCanc
           name="trucban_noivu"
           label="Trực ban nội vụ"
           rules={[{ required: true }]}
+          initialValue={selectedRow?.trucban_noivu}
         >
           <Select
             placeholder="Trực ban nội vụ"
@@ -168,6 +172,7 @@ const EditHandOverReportModal = ({ isVisibleEditForm, selectedRow,handleEditCanc
           name="noidung_quanso"
           label="Nội dung quân số"
           rules={[{ required: true }]}
+          initialValue={selectedRow?.noidung_quanso}
         >
           <Input.TextArea defaultValue={selectedRow?.noidung_quanso} />
         </Form.Item>
@@ -176,6 +181,7 @@ const EditHandOverReportModal = ({ isVisibleEditForm, selectedRow,handleEditCanc
           name="noidung_vukhi"
           label="Nội dung vũ khí"
           rules={[{ required: true }]}
+          initialValue={selectedRow?.noidung_vukhi}
         >
           <Input.TextArea defaultValue={selectedRow?.noidung_vukhi} />
         </Form.Item>
@@ -184,6 +190,7 @@ const EditHandOverReportModal = ({ isVisibleEditForm, selectedRow,handleEditCanc
           name="noidung_ketqua"
           label="Nội dung kết quả"
           rules={[{ required: true }]}
+          initialValue={selectedRow?.noidung_ketqua}
         >
           <Input.TextArea defaultValue={selectedRow?.noidung_ketqua} />
         </Form.Item>
@@ -192,6 +199,7 @@ const EditHandOverReportModal = ({ isVisibleEditForm, selectedRow,handleEditCanc
           name="noidung_dukien"
           label="Nội dung dự kiến"
           rules={[{ required: true }]}
+          initialValue={selectedRow?.noidung_dukien}
         >
           <Input.TextArea defaultValue={selectedRow?.noidung_dukien} />
         </Form.Item>
@@ -199,6 +207,7 @@ const EditHandOverReportModal = ({ isVisibleEditForm, selectedRow,handleEditCanc
           name="noidung_ykien"
           label="Nội dung ý kiến"
           rules={[{ required: true }]}
+          initialValue={selectedRow?.noidung_ykien}
         >
           <Input.TextArea defaultValue={selectedRow?.noidung_ykien} />
         </Form.Item>
@@ -206,6 +215,7 @@ const EditHandOverReportModal = ({ isVisibleEditForm, selectedRow,handleEditCanc
           name="noidung_ketluan"
           label="Nội dung kết luận"
           rules={[{ required: true }]}
+          initialValue={selectedRow?.noidung_ketluan}
         >
           <Input.TextArea defaultValue={selectedRow?.noidung_ketluan} />
         </Form.Item>
@@ -214,6 +224,7 @@ const EditHandOverReportModal = ({ isVisibleEditForm, selectedRow,handleEditCanc
           name="noidung_KH_BTL"
           label="Nội dung kế hoạch BTL"
           rules={[{ required: true }]}
+          initialValue={selectedRow?.noidung_KH_BTL}
         >
           <Input.TextArea defaultValue={selectedRow?.noidung_KH_BTL} />
         </Form.Item>
@@ -222,6 +233,7 @@ const EditHandOverReportModal = ({ isVisibleEditForm, selectedRow,handleEditCanc
           name="noidung_chidao_BTL"
           label="Nội dung chỉ đạo BTL"
           rules={[{ required: true }]}
+          initialValue={selectedRow?.noidung_chidao_BTL}
         >
           <Input.TextArea defaultValue={selectedRow?.noidung_chidao_BTL} />
         </Form.Item>
